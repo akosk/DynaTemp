@@ -1,0 +1,19 @@
+<ng-template #textTemplate let-data="data">
+  {{data}}
+</ng-template>
+
+<ng-template #emailTemplate let-data="data">
+  <a href="mailto:{{data}}">{{data}}</a>
+</ng-template>
+
+<ng-template #checkboxTemplate let-data="data">
+  <input type="checkbox" [checked]="data" disabled/>
+</ng-template>
+
+<ng-template #urlTemplate let-data="data">
+  <a [href]="data" class="card-link">{{data}}</a>
+</ng-template>
+
+<ng-template #cityTemplate let-data="data">
+  <a [href]="'https://www.google.hu/maps/place/'+data" target="_blank"> <span class="k-icon k-i-marker-pin"></span> {{data}}</a>
+</ng-template>

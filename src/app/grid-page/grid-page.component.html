@@ -1,0 +1,19 @@
+<kendo-grid [data]="gridData" [height]="400">
+
+  <!--Ide jó lenne egy saját komponens, de ha beteszem egy sajátba már nem működik-->
+  <kendo-grid-column
+    *ngFor="let col of columnsDefinition"
+    [field]="col.field"
+    [title]="col.title"
+  >
+    <ng-template *ngIf="col.template" kendoGridCellTemplate let-dataItem>
+      <ng-container [ngTemplateOutlet]="getTemplate(col.template)"
+                    [ngTemplateOutletContext]="{data:getTemplateContext(dataItem,col)}"></ng-container>
+    </ng-template>
+
+  </kendo-grid-column>
+
+</kendo-grid>
+
+<!--Ezt itt sajna minden grid mellé be kell tenni, jó lenne dinamikusan létrehozni JS-ből-->
+<app-kendo-grid-column-templates #columnTemplates></app-kendo-grid-column-templates>
